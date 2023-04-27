@@ -33,6 +33,18 @@ public:
 
     Player(const Player &) = delete;
 
+    Player (Player && other):
+        m_color(other.m_color),
+        width(other.width),
+        height(other.height),
+        m_x(other.m_x),
+        m_y(other.m_y),
+        m_dir(other.m_dir),
+        m_dir_str(other.m_dir_str)
+    {
+
+    }
+
     ~Player() noexcept = default;
 
 public:

@@ -17,7 +17,7 @@ int main()
 
     try
     {
-        ClientGamer game(p2, p1, speed, nickname, raw_ip_address, port);
+        ClientGamer game(std::move(p2), std::move(p1), speed, nickname, raw_ip_address, port);
 
         game.run();
     }

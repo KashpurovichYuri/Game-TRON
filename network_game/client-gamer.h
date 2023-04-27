@@ -7,6 +7,7 @@
 #include <string>
 #include <thread>
 #include <chrono>
+#include <utility>
 
 #include <boost/asio.hpp>
 
@@ -24,14 +25,14 @@ private:
 public:
 
     explicit ClientGamer(
-        Player& player1,
-        Player& player2,
+        Player&& player1,
+        Player&& player2,
         int speed,
         const std::string& client_name,
         const std::string& raw_ip_address,
         unsigned int port) :
-        m_player1(player1),
-        m_player2(player2),
+        m_player1(std::move(player1)),
+        m_player2(std::move(player2)),
         game(player1, speed),
         m_client_name(client_name),
         m_raw_ip_address(raw_ip_address),

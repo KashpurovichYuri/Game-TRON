@@ -100,7 +100,7 @@ private:
         std::getline(input_stream2, message2, '#');
     }
 
-    void read()
+    void read() noexcept
     {
         send_message(m_client1_name + " and " + m_client2_name + " joined the server and started the game!");
 
@@ -110,7 +110,7 @@ private:
         }
     }
 
-    void read_data_until()
+    void read_data_until() noexcept
     {
         std::string message1;
         std::string message2;
@@ -127,7 +127,7 @@ private:
         boost::asio::write(m_socket1, boost::asio::buffer(m_client2_name + " " + message2 + "#"));
     }
 
-    void send_message(const std::string& message)
+    void send_message(const std::string& message) const noexcept
     {
         std::cout << message << "\n";
     }
@@ -142,13 +142,13 @@ private:
         write("the game is starting!#");
     }
 
-    void write(const std::string& message)
+    void write(const std::string& message) noexcept
     {
         boost::asio::write(m_socket1, boost::asio::buffer(message));
         boost::asio::write(m_socket2, boost::asio::buffer(message));
     }
 
-    void server_write()
+    void server_write() noexcept
     {
         for (
             std::string message;

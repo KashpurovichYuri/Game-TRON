@@ -34,7 +34,7 @@ public:
 
     //Player(const Player&) = delete;
 
-    ~Player() = default;
+    ~Player() noexcept = default;
 
 private:
 
